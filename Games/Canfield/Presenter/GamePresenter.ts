@@ -6,10 +6,10 @@ import { Rect } from "~CardLib/View/Rect";
 import { IGame } from "../Model/IGame";
 
 const margin = 1;
-const baseSizeY = 20;
+const baseSizeY = 20 * 1.3;
 const baseSizeX = baseSizeY / 1.555555555555;
-const sizeY = baseSizeY / 1.3;
-const sizeX = baseSizeX / 1.3;
+const sizeY = baseSizeY;
+const sizeX = baseSizeX;
 
 export class GamePresenter extends GamePresenterBase<IGame> {
     private readonly stockPile_: PileView;
@@ -66,7 +66,7 @@ export class GamePresenter extends GamePresenterBase<IGame> {
     }
 
     private layoutPiles_() {
-        const tableSize = 7; // 7 columns
+        const tableSize = 6; // 6 columns: Stock, Waste, F1, F2, F3, F4
 
         let vExpand = 1;
         if (window.matchMedia("screen and (max-aspect-ratio: 100/130)").matches) {
@@ -80,29 +80,22 @@ export class GamePresenter extends GamePresenterBase<IGame> {
         const yStartRow1 = vExpand * -15 + margin;
         const yStartRow2 = yStartRow1 + sizeY + margin * 2;
 
-        // Row 1:
-        // Foundations at 0, 1, 2, 3
+        // Row 1: Stock at 0, Waste at 1, Foundations at 2, 3, 4, 5
+        this.stockPile_.rect = new Rect(sizeX, sizeY, xPos(0), yStartRow1);
+        
+        this.wastePile_.fanXUp = 3 / 1.3;
+        this.wastePile_.rect = new Rect(sizeX, sizeY, xPos(1), yStartRow1);
+
         for (let i = 0; i < this.foundationPiles_.length; ++i) {
-            this.foundationPiles_[i].rect = new Rect(sizeX, sizeY, xPos(i), yStartRow1);
+            this.foundationPiles_[i].rect = new Rect(sizeX, sizeY, xPos(i + 2), yStartRow1);
         }
 
-        // Waste fan at Col 4. We will fan it to the right (x direction).
-        this.wastePile_.fanXUp = 3 / 1.3; // Fan horizontally
-        this.wastePile_.rect = new Rect(sizeX, sizeY, xPos(4), yStartRow1);
-
-        // Stock at Col 6
-        this.stockPile_.rect = new Rect(sizeX, sizeY, xPos(6), yStartRow1);
-
-        // Row 2:
-        // Reserve at Col 0
+        // Row 2: Reserve at 0, Tableaux at 2, 3, 4, 5
         this.reservePile_.rect = new Rect(sizeX, sizeY, xPos(0), yStartRow2);
-        // We fan the reserve downwards slightly if we want, but usually it's just stacked, or only top card visible.
-        // The rule says "Deal 13 cards to the Reserve pile (Stack 4), top card face up." So the others are hidden or stacked. We'll add a tiny fan.
-        this.reservePile_.fanYDown = 0.5;
+        this.reservePile_.fanYDown = 1.0;
 
-        // Tableaux at Cols 1, 2, 3, 4
         for (let i = 0; i < this.tableauPiles_.length; ++i) {
-            this.tableauPiles_[i].rect = new Rect(sizeX, sizeY, xPos(i + 1), yStartRow2);
+            this.tableauPiles_[i].rect = new Rect(sizeX, sizeY, xPos(i + 2), yStartRow2);
             this.tableauPiles_[i].fanYDown = 3.5 / 1.3;
             this.tableauPiles_[i].fanYUp = vExpand * 3.5 / 1.3;
         }

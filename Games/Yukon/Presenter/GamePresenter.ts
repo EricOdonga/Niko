@@ -6,10 +6,10 @@ import { Rect } from "~CardLib/View/Rect";
 import { IGame } from "../Model/IGame";
 
 const margin = 1;
-const baseSizeY = 20;
+const baseSizeY = 20 * 1.3;
 const baseSizeX = baseSizeY / 1.555555555555;
-const sizeY = baseSizeY / 1.3;
-const sizeX = baseSizeX / 1.3;
+const sizeY = baseSizeY;
+const sizeX = baseSizeX;
 
 export class GamePresenter extends GamePresenterBase<IGame> {
     private readonly foundationPiles_: PileView[] = [];
@@ -53,7 +53,7 @@ export class GamePresenter extends GamePresenterBase<IGame> {
     }
 
     private layoutPiles_() {
-        const tableSize = 8; // 8 columns total
+        const tableSize = 7; // 7 columns total
 
         let vExpand = 1;
         if (window.matchMedia("screen and (max-aspect-ratio: 100/130)").matches) {
@@ -63,14 +63,15 @@ export class GamePresenter extends GamePresenterBase<IGame> {
             return (i - 0.5 * (tableSize - 1)) * (sizeX + margin);
         };
 
-        const yStart = vExpand * -15 + margin;
+        const yStartRow1 = vExpand * -15 + margin;
+        const yStartRow2 = yStartRow1 + sizeY + margin * 2;
 
         for (let i = 0; i < this.game_.tableaux.length; ++i) {
             const pile = this.game_.tableaux[i] ?? error();
             const pileView = this.getPileView_(pile);
-            pileView.rect = new Rect(sizeX, sizeY, xPos(i), yStart);
-            pileView.fanYDown = 3.5 / 1.3;
-            pileView.fanYUp = vExpand * 3.5 / 1.3;
+            pileView.rect = new Rect(sizeX, sizeY, xPos(i), yStartRow2);
+            pileView.fanYDown = 3.5;
+            pileView.fanYUp = vExpand * 3.5;
         }
 
         for (let i = 0; i < this.game_.foundations.length; ++i) {
@@ -79,8 +80,8 @@ export class GamePresenter extends GamePresenterBase<IGame> {
             pileView.rect = new Rect(
                 sizeX,
                 sizeY,
-                xPos(7),
-                yStart + i * (sizeY + margin)
+                xPos(i + 3),
+                yStartRow1
             );
         }
     }
