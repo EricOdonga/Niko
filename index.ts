@@ -6,9 +6,11 @@ import Klondike from "~Games/Klondike/GameInfo";
 import KlondikeEx from "~Games/KlondikeEx/GameInfo";
 import Pyramid from "~Games/Pyramid/GameInfo";
 import Yukon from "~Games/Yukon/GameInfo";
+import Freecell from "~Games/Freecell/GameInfo";
 
 const gameInfos = new Map<string, IGameInfo>();
 gameInfos.set(Canfield.gameId, Canfield);
+gameInfos.set(Freecell.gameId, Freecell);
 gameInfos.set(Klondike.gameId, Klondike);
 gameInfos.set(KlondikeEx.gameId, KlondikeEx);
 gameInfos.set(Pyramid.gameId, Pyramid);
