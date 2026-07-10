@@ -14,7 +14,7 @@ gameInfos.set(KlondikeEx.gameId, KlondikeEx);
 gameInfos.set(Pyramid.gameId, Pyramid);
 gameInfos.set(Yukon.gameId, Yukon);
 
-window.addEventListener("load", () => {
+const init = () => {
     const tableHolder = document.getElementById("tableHolder") ?? document.body;
     const homepage = document.getElementById("homepage");
     const gameContainer = document.getElementById("game-container");
@@ -89,4 +89,11 @@ window.addEventListener("load", () => {
 
     window.addEventListener("hashchange", refreshGame);
     refreshGame();
-});
+};
+
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+} else {
+    init();
+}
+

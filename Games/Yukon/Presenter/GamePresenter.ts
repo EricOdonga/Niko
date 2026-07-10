@@ -8,8 +8,8 @@ import { IGame } from "../Model/IGame";
 const margin = 1;
 const baseSizeY = 20;
 const baseSizeX = baseSizeY / 1.555555555555;
-const sizeY = baseSizeY / 1.5;
-const sizeX = baseSizeX / 1.5;
+const sizeY = baseSizeY / 1.3;
+const sizeX = baseSizeX / 1.3;
 
 export class GamePresenter extends GamePresenterBase<IGame> {
     private readonly foundationPiles_: PileView[] = [];
@@ -69,8 +69,8 @@ export class GamePresenter extends GamePresenterBase<IGame> {
             const pile = this.game_.tableaux[i] ?? error();
             const pileView = this.getPileView_(pile);
             pileView.rect = new Rect(sizeX, sizeY, xPos(i), yStart);
-            pileView.fanYDown = 3.5 / 1.5;
-            pileView.fanYUp = vExpand * 3.5 / 1.5;
+            pileView.fanYDown = 3.5 / 1.3;
+            pileView.fanYUp = vExpand * 3.5 / 1.3;
         }
 
         for (let i = 0; i < this.game_.foundations.length; ++i) {
