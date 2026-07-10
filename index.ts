@@ -7,10 +7,12 @@ import KlondikeEx from "~Games/KlondikeEx/GameInfo";
 import Pyramid from "~Games/Pyramid/GameInfo";
 import Yukon from "~Games/Yukon/GameInfo";
 import Freecell from "~Games/Freecell/GameInfo";
+import EightOff from "~Games/EightOff/GameInfo";
 import GrandfathersClock from "~Games/GrandfathersClock/GameInfo";
 
 const gameInfos = new Map<string, IGameInfo>();
 gameInfos.set(Canfield.gameId, Canfield);
+gameInfos.set(EightOff.gameId, EightOff);
 gameInfos.set(Freecell.gameId, Freecell);
 gameInfos.set(Klondike.gameId, Klondike);
 gameInfos.set(KlondikeEx.gameId, KlondikeEx);
