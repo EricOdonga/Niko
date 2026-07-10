@@ -7,6 +7,7 @@ import KlondikeEx from "~Games/KlondikeEx/GameInfo";
 import Pyramid from "~Games/Pyramid/GameInfo";
 import Yukon from "~Games/Yukon/GameInfo";
 import Freecell from "~Games/Freecell/GameInfo";
+import SeahavenTowers from "~Games/SeahavenTowers/GameInfo";
 
 const gameInfos = new Map<string, IGameInfo>();
 gameInfos.set(Canfield.gameId, Canfield);
@@ -15,6 +16,7 @@ gameInfos.set(Klondike.gameId, Klondike);
 gameInfos.set(KlondikeEx.gameId, KlondikeEx);
 gameInfos.set(Pyramid.gameId, Pyramid);
 gameInfos.set(Yukon.gameId, Yukon);
+gameInfos.set(SeahavenTowers.gameId, SeahavenTowers);
 
 const init = () => {
     const tableHolder = document.getElementById("tableHolder") ?? document.body;
