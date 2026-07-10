@@ -1,0 +1,9 @@
+
+> pyramid@1.0.0 dev
+> parcel serve --dist-dir bin-dev --port 3000 --host 0.0.0.0
+
+Building...
+Bundling...
+Packaging & Optimizing...
+Server running at http://0.0.0.0:3000
+✨ Built in 1.31s
