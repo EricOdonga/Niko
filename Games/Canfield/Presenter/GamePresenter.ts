@@ -6,10 +6,8 @@ import { Rect } from "~CardLib/View/Rect";
 import { IGame } from "../Model/IGame";
 
 const margin = 1;
-const baseSizeY = 20 * 1.3;
-const baseSizeX = baseSizeY / 1.555555555555;
-const sizeY = baseSizeY;
-const sizeX = baseSizeX;
+const sizeY = 20;
+const sizeX = sizeY / 1.555555555555;
 
 export class GamePresenter extends GamePresenterBase<IGame> {
     private readonly stockPile_: PileView;
@@ -77,13 +75,13 @@ export class GamePresenter extends GamePresenterBase<IGame> {
             return (i - 0.5 * (tableSize - 1)) * (sizeX + margin);
         };
 
-        const yStartRow1 = vExpand * -15 + margin;
-        const yStartRow2 = yStartRow1 + sizeY + margin * 2;
+        const yStartRow1 = vExpand * -35 + margin;
+        const yStartRow2 = vExpand * -15 + margin;
 
         // Row 1: Stock at 0, Waste at 1, Foundations at 2, 3, 4, 5
         this.stockPile_.rect = new Rect(sizeX, sizeY, xPos(0), yStartRow1);
         
-        this.wastePile_.fanXUp = 3 / 1.3;
+        this.wastePile_.fanXUp = 3;
         this.wastePile_.rect = new Rect(sizeX, sizeY, xPos(1), yStartRow1);
 
         for (let i = 0; i < this.foundationPiles_.length; ++i) {
@@ -96,8 +94,8 @@ export class GamePresenter extends GamePresenterBase<IGame> {
 
         for (let i = 0; i < this.tableauPiles_.length; ++i) {
             this.tableauPiles_[i].rect = new Rect(sizeX, sizeY, xPos(i + 2), yStartRow2);
-            this.tableauPiles_[i].fanYDown = 3.5 / 1.3;
-            this.tableauPiles_[i].fanYUp = vExpand * 3.5 / 1.3;
+            this.tableauPiles_[i].fanYDown = 3.5;
+            this.tableauPiles_[i].fanYUp = vExpand * 3.5;
         }
     }
 }

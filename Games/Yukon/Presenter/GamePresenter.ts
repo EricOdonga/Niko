@@ -6,10 +6,8 @@ import { Rect } from "~CardLib/View/Rect";
 import { IGame } from "../Model/IGame";
 
 const margin = 1;
-const baseSizeY = 20 * 1.3;
-const baseSizeX = baseSizeY / 1.555555555555;
-const sizeY = baseSizeY;
-const sizeX = baseSizeX;
+const sizeY = 20;
+const sizeX = sizeY / 1.555555555555;
 
 export class GamePresenter extends GamePresenterBase<IGame> {
     private readonly foundationPiles_: PileView[] = [];
@@ -63,8 +61,8 @@ export class GamePresenter extends GamePresenterBase<IGame> {
             return (i - 0.5 * (tableSize - 1)) * (sizeX + margin);
         };
 
-        const yStartRow1 = vExpand * -15 + margin;
-        const yStartRow2 = yStartRow1 + sizeY + margin * 2;
+        const yStartRow1 = vExpand * -35 + margin;
+        const yStartRow2 = vExpand * -15 + margin;
 
         for (let i = 0; i < this.game_.tableaux.length; ++i) {
             const pile = this.game_.tableaux[i] ?? error();
