@@ -77,7 +77,7 @@ export class GamePresenter extends GamePresenterBase<IGame> {
             return (i - 0.5 * (tableSize - 1)) * (sizeX + margin);
         };
 
-        const yStartRow1 = vExpand * -35 + margin;
+        const yStartRow1 = vExpand * -15 + margin;
         const yStartRow2 = yStartRow1 + sizeY + margin * 2;
 
         // Row 1:

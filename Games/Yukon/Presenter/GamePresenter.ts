@@ -63,7 +63,7 @@ export class GamePresenter extends GamePresenterBase<IGame> {
             return (i - 0.5 * (tableSize - 1)) * (sizeX + margin);
         };
 
-        const yStart = vExpand * -35 + margin;
+        const yStart = vExpand * -15 + margin;
 
         for (let i = 0; i < this.game_.tableaux.length; ++i) {
             const pile = this.game_.tableaux[i] ?? error();
